@@ -6,14 +6,26 @@
 //   camelize("-webkit-transition") == 'WebkitTransition';
 
 
-function camelize(str){
+function camelize1(str){
     let index = str.search(/-/g);
     if(index != -1){
-        let string = str.replace(/-/g, '');
+        let string = str.replace(/-/g, ''); //this just removes the dashes, but doesn't capitalise the first letter
         return string;
     }
     return str;
 }
+
+function camelize(str) {
+    return str
+      .split('-') // splits 'my-long-word' into array ['my', 'long', 'word']
+      .map(
+        // capitalizes first letters of all array items except the first one
+        // converts ['my', 'long', 'word'] into ['my', 'Long', 'Word']
+        (word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1)
+      )
+      .join(''); // joins ['my', 'Long', 'Word'] into 'myLongWord'
+  }
+  
 
 console.log(camelize("background-color"));
 console.log(camelize("list-style-image"));

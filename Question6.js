@@ -1,5 +1,5 @@
 function unique(arr){
-    var uniqueArray = [...new Set(arr)];
+    var uniqueArray = [...new Set(arr)]; //nice! sets are always unique, so great idea
     return uniqueArray;
 }
 
